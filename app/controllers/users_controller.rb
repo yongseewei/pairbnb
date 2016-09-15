@@ -11,6 +11,9 @@ class UsersController < Clearance::UsersController
     end
   end
 
+  def index
+
+  end
 
  	private
 

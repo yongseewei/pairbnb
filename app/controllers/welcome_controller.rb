@@ -3,6 +3,8 @@ class WelcomeController < ApplicationController
 
   def home
   	# @code = "123"
+
+  	# @code = ENV["pusher_app_id"]
   end
 
   private
