@@ -1,0 +1,28 @@
+<div id="pint_show" class="row">
+	<div class="col-md-8 col-md-offset-2">
+		<div class="panel panel-default">
+			<div class="panel-heading pint_image">
+ 
+			</div>
+			<div class="panel-body">
+				<h1><%=	@list.title %></h1>
+				<p class="description"><%= simple_format(@list.description) %></p>
+			</div>
+			<div class="panel-footer">
+				<div class="row">
+					<div class="col-md-6">
+						<p class="user">Submitted by: <%= @list.user.email %></p>
+					</div>
+					<div class="col-md-6">
+						<div class="btn-group pull-right">
+							<% if signed_in? %>
+								<%= link_to "Edit", edit_listing_path, class: "btn btn-default" %>
+								<%= link_to "Delete", @list, method: :delete, data: { confirm: "Are you sure?"}, class: "btn btn-default" %>
+							<% end %>
+						</div>	
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

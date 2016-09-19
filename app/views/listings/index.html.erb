@@ -1,0 +1,9 @@
+<% @lists.each do |listt| %>
+	<div class="box panel panel-default">
+		<!-- <%= link_to (image_tag pint.image.url), pint %> -->
+		<div class="panel-body">
+			<h2><%= link_to list.title, list%></h2>
+			<p class="user">Submitted by: <%= list.user.email %></p>
+		</div>
+	</div>
+<% end %>

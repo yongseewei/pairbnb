@@ -43,6 +43,8 @@ gem 'omniauth'
 
 gem 'omniauth-facebook'
 
+gem 'simple_form', '~> 3.3', '>= 3.3.1'
+
 
 
 group :development, :test do
