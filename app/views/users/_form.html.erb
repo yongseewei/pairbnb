@@ -1,24 +1,24 @@
-<div class="text-field">
-  <%= form.label :firstname %>
-  <%= form.text_field :firstname, type: 'text' %>
+<div class="text-field form-group">
+  <%= form.label :firstname %><br>
+  <%= form.text_field :firstname, type: 'text', class: 'form-control' %>
 </div>
 
-<div class="text-field">
-  <%= form.label :lastname %>
-  <%= form.text_field :lastname, type: 'text' %>
+<div class="text-field form-group">
+  <%= form.label :lastname %><br>
+  <%= form.text_field :lastname, type: 'text', class: 'form-control'  %>
 </div>
 
-<div class="text-field">
-  <%= form.label :birthday %>
-  <%= form.date_field :birthday, type: 'date' %>
+<div class="text-field form-group">
+  <%= form.label :birthday %><br>
+  <%= form.date_field :birthday, type: 'date', class: 'form-control'  %>
 </div>
 
-<div class="text-field">
-  <%= form.label :email %>
-  <%= form.text_field :email, type: 'email' %>
+<div class="text-field form-group">
+  <%= form.label :email %><br>
+  <%= form.text_field :email, type: 'email', class: 'form-control'  %>
 </div>
 
-<div class="password-field">
-  <%= form.label :password %>
-  <%= form.password_field :password %>
+<div class="password-field form-group">
+  <%= form.label :password %><br>
+  <%= form.password_field :password, class: 'form-control'  %>
 </div>

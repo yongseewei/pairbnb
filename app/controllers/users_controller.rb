@@ -5,9 +5,10 @@ class UsersController < Clearance::UsersController
 
     if @user.save
       sign_in @user
+
       redirect_back_or url_after_create
     else
-      render template: "users/new"
+      redirect_to sign_up_path, notice: "Sign up fail!"
     end
   end
 
