@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
   has_many :authentications, :dependent => :destroy
   has_many :listings
 
+  mount_uploader :avatar, AvatarUploader
+
   def self.create_with_auth_and_hash(authentication,auth_hash)
     # name = auth_hash["info"]["name"].split(" ")
     # byebug

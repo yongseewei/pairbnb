@@ -18,16 +18,17 @@
 //= require_tree .
 
 $(document).ready(function(){
-	$("#filter-button").click(function(){
+	$(document).on("click","#filter-button",function(event){
 		$("#filter-listings").slideDown()
 		$("#filter-button").hide()
 	});
-	$("#filter-listings .filter-cancel").click(function(){
+
+	$(document).on("click","#filter-listings .filter-cancel",function(event){
 		$("#filter-listings").slideUp()
 		$("#filter-button").show()
 	});
 
-	$("#filter-submit").change(function(e, data, status, xhr){
+	$(document).on("change","#filter-submit",function(event){
 		// debugger
 		$.ajax({
 			type: 'GET',

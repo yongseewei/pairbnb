@@ -1,0 +1,23 @@
+<div class="col-md-8 col-md-offset-2">
+	<div class="row">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h1>Edit</h1>
+			</div>
+			<div class="panel-body">
+			Current avatar: <br>
+			<%= image_tag @user.avatar.url(:thumb)%>
+				<%= form_for @user do |form| %>
+            <%= render partial: '/users/form', object: form %>
+
+            <div class="form-actions">
+              <%= form.button "Edit", class: "btn btn-primary"  %>
+            </div>
+
+
+            
+          <% end %>
+			</div>
+		</div>
+	</div>
+</div>
