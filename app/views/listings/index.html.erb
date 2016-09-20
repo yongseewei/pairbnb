@@ -1,9 +1,36 @@
-<% @lists.each do |listt| %>
-	<div class="box panel panel-default">
-		<!-- <%= link_to (image_tag pint.image.url), pint %> -->
-		<div class="panel-body">
-			<h2><%= link_to list.title, list%></h2>
-			<p class="user">Submitted by: <%= list.user.email %></p>
-		</div>
+<div id="filter-listings" class="panel panel-default">
+	<div class="panel-heading">
+		Options
 	</div>
-<% end %>
+  <div class="panel-body">
+	  <%= form_tag("/listings", id: "filter-submit", remote: true) do %>
+		  <div class="row">
+				<div class="col-md-3 col-md-offset-2">
+					<%= hidden_field_tag :non_smoker, 'false' %>
+				  <%= check_box_tag :non_smoker, checked = true %>
+				  <%= label_tag(:non_smoker, "Non-Smoker") %>
+			  </div>	
+			  <div class="col-md-3 col-md-offset-2">
+				  <%= hidden_field_tag :non_pet, 'false' %>
+				  <%= check_box_tag :non_pet, checked = true %>
+				  <%= label_tag(:non_pet, "Non-Pet") %>
+			  </div>
+		  </div>	
+		  <div class="row">
+				<div class="col-md-4 pull-right">
+					<div class="col-md-3" >
+						<button type="button" class="btn btn-default filter-cancel">Cancel</button>
+					</div>
+				</div>
+			</div>
+		<% end %>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-2 col-md-offset-5 pull-middle">
+		<button id="filter-button" class= "btn btn-default" type="button">Filters</button>
+	</div>
+</div>
+
+	<%= render 'list' %>

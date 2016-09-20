@@ -29,6 +29,9 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit, :update, :destroy] 
 
   resources :listings
+  resources :tags, only: [:index, :show]
+
+  post "/listings/filter" => "listings#filter"
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
