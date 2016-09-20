@@ -1,8 +1,10 @@
 <div id="pint_show" class="row">
 	<div class="col-md-8 col-md-offset-2">
 		<div class="panel panel-default">
-			<div class="panel-heading pint_image">
- 
+			<div class="panel-heading list_image text-center">
+			<% if @list.images.first != nil %>
+ 				<%= render 'carousel' %>
+ 				<% end %>
 			</div>
 			<div class="panel-body">
 				<h1><%=	@list.title %></h1>

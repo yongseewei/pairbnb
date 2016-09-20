@@ -1,7 +1,9 @@
 <div id="lists" class="transitions-enabled">
 	<% @lists.each do |list| %>
 		<div class="box panel panel-default">
-
+		<% if list.images.first != nil %>
+		<%= link_to (image_tag list.images.first.url), list %>
+		<% end %>
 			<div class="panel-body">
 				<h2><%= link_to list.title, list%></h2>
 				<div class="row">

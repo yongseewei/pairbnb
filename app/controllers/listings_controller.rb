@@ -20,7 +20,7 @@ class ListingsController < ApplicationController
 	end
 
 	def show
-
+		@images = @list.images.sample(4)
 	end
 
 	def new
@@ -74,7 +74,7 @@ class ListingsController < ApplicationController
 	private
 
 	def list_params
-		params.require(:listing).permit(:title, :rate, :description, :tag_list)
+		params.require(:listing).permit(:title, :rate, :description, :tag_list, {images: []})
 	end
 
 	def find_list

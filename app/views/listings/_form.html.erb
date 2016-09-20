@@ -2,7 +2,7 @@
   <% if @list.errors.any? %>
     <div id="errors">
       <h2>
-        <%= pluralize(@listt.errors.count, "error") %>
+        <%= pluralize(@list.errors.count, "error") %>
         prevented this List from saving
       </h2>
       <ul>
@@ -25,7 +25,11 @@
     <%= f.input :tag_list, input_html: { class: 'form-control' } %>
   </div>
   <div class="form-group">
-    <%= f.input :description, input_html: { class: 'form-control' } %>
+    <%= f.label :images %>
+    <%= f.file_field :images,  class: 'form-control'  , multiple: true %>
+  </div>
+  <div class="form-group">
+    <%= f.input :description, input_html: { class: 'form-control' }%>
   </div>
   <%= f.button :submit, class: "btn btn-primary" %>
 <% end %>
