@@ -1,16 +1,20 @@
-<div id="pint_show" class="row">
-	<div class="col-md-8 col-md-offset-2">
+<div id="list_show" class="row" data-id="<%= @date %>">
+	<div class="col-md-10 col-md-offset-1">
 		<div class="panel panel-default">
 			<div class="panel-heading list_image text-center">
 				<% if @list.images.first != nil %>
- 					<%= render 'carousel' %>
+ 					<%= render 'listings/carousel' %>
  				<% end %>
 			</div>
 			<div class="panel-body">
-				<h1><%=	@list.title %></h1>
-				<p class="description"><%= simple_format(@list.description) %></p>
-				<div class="col-md-6 pull-right">
-					<p class="pull-right">$<%= @list.rate %> Per night</p>
+				<div class="row-fluid">
+					<div class="col-md-8">
+						<h1><%=	@list.title %></h1>
+						<p class="description"><%= simple_format(@list.description) %></p>
+					</div>
+					<% if signed_in? && !correct_user? %>
+						<%= render 'listings/reservation' %>
+					<% end %>
 				</div>
 			</div>
 			<div class="panel-footer">
@@ -21,7 +25,7 @@
 					<div class="col-md-6">
 						<div class="btn-group pull-right">
 							<% if signed_in? && correct_user? %>
-								<%= link_to "Edit", edit_listing_path, class: "btn btn-default" %>
+								<%= link_to "Edit", edit_listing_path(@list), class: "btn btn-default" %>
 								<%= link_to "Delete", @list, method: :delete, data: { confirm: "Are you sure?"}, class: "btn btn-default" %>
 							<% end %>
 						</div>	

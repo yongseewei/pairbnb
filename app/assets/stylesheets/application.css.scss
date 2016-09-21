@@ -11,6 +11,7 @@
  * file per style scope.
  *
  *= require 'masonry/basic'
+ *= require jquery-ui
  *= require_tree .
  *= require_self
  */
@@ -63,4 +64,21 @@ textarea {
 
 .carousel-inner > .item > img {
     margin: 0 auto;
+}
+
+.list-info-col{
+	background:#B7F36E  ;
+	height: 100%;
+}
+
+.list-info-col table{
+	text-align:center; 
+}
+
+.list-info-col th{
+	font-size:12px;
+}
+
+.list-info-col td{
+	text-align:left; 
 }

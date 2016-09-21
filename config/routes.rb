@@ -2,8 +2,6 @@ Rails.application.routes.draw do
 
   get 'users/show'
 
-  get 'users/index' => "users#index", as: "user_index"
-
   get 'welcome/home'
 
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
@@ -33,6 +31,13 @@ Rails.application.routes.draw do
 
   resources :tags, only: [:index, :show]
 
+  resources :listings do
+    resources :reservations, only: [:new, :create]
+  end
+
+  resources :users do
+    resources :reservations, only: [:index]
+  end
   # post "/listings/filter" => "listings#filter"
 
   # Example of regular route:

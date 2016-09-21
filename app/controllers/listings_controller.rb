@@ -25,7 +25,9 @@ class ListingsController < ApplicationController
 	end
 
 	def show
+		@date = @list.taken_date
 		@images = @list.images.sample(4)
+		@reservation = Reservation.new
 	end
 
 	def new

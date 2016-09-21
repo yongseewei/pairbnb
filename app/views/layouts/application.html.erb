@@ -18,7 +18,8 @@
       <% if signed_in? %>
         <ul class="nav navbar-nav navbar-right">
           <li><%= link_to "New List", new_listing_path%></li>
-          <li><%= link_to "Account", edit_user_path(current_user)%></li>
+          <li><%= link_to "My reservations", user_reservations_path(current_user)%></li>
+          <li><%= link_to "Account", user_path(current_user)%></li>
           <li><%= link_to "Sign Out", sign_out_path, method: :delete %></li>
         </ul>
       <% else %>
