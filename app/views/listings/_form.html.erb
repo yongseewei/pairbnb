@@ -22,11 +22,11 @@
     <%= f.input :rate, input_html: { class: 'form-control' } %>
   </div>
   <div class="form-group">
-    <%= f.input :tag_list, input_html: { class: 'form-control' } %>
+    <%= f.input :tag_list, input_html: {  value: @list.tag_list.to_s, class: 'form-control' } %>
   </div>
   <div class="form-group">
     <%= f.label :images %>
-    <%= f.file_field :images,  class: 'form-control'  , multiple: true %>
+    <%= f.file_field :images, class: 'form-control'  , multiple: true %>
   </div>
   <div class="form-group">
     <%= f.input :description, input_html: { class: 'form-control' }%>

@@ -14,6 +14,7 @@
           <i class="fa fa-home" aria-hidden="true"></i> PairBnB
         <% end %>
       </div>
+      <%= render 'layouts/search' %>
       <% if signed_in? %>
         <ul class="nav navbar-nav navbar-right">
           <li><%= link_to "New List", new_listing_path%></li>

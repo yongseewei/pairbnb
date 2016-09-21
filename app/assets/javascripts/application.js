@@ -29,38 +29,16 @@ $(document).ready(function(){
 	});
 
 	$(document).on("change","#filter-submit",function(event){
-		// debugger
 		$.ajax({
 			type: 'GET',
 			url: $(this).attr('action'),
 			data: $(this).serialize(),
 			dataType: "script",
-			success: function(msg) {
-					// debugger;
-			}
+			success: function(msg) {}
 		});
 	})
-	// $("#filter-submit").on("ajax:success", function(e, data, status, xhr){
 
-	// 	debugger
-	// });
-	// $("#filter-submit").submit(function(event){
-	// 		// $("form").submit(function(event){
-	// 		// 	debugger;
-	// 		// });
-	// 	var element = this;
-	// 	// debugger
-	// 	// event.preventDefault();
-	// 	$.ajax({
-	// 		type: 'POST',
-	// 		url: $(element).attr('action'),
-	// 		data: $(element).serialize(),
-	// 		dataType: "json",
-	// 		success: function(msg) {
-	// 				debugger;
-	// 		}
-	// 	});
-	// 	// return false;
-	// 	// alert("123")
-	// });
+	$("#search-submit").submit(function(e){
+		debugger;
+	})
 });

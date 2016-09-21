@@ -1,5 +1,5 @@
 <div id="lists" class="transitions-enabled">
-	<% @lists.each do |list| %>
+	<% object.each do |list| %>
 		<div class="box panel panel-default">
 		<% if list.images.first != nil %>
 		<%= link_to (image_tag list.images.first.url), list %>
