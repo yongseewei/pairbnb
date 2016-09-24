@@ -1,6 +1,17 @@
 class ReservationsController < ApplicationController
+	before_action :authenticate_user, only: [:index]
 	def index
-		@reservations = current_user.reservations
+		if params[:user_id]
+			@show_user_listing = true
+			@user = User.find(params[:user_id])
+			redirect_to root_path, notice: "You are not allowed to enter this page!" if @user != current_user
+			@reservations = current_user.reservations
+		elsif params[:listing_id]
+			@show_user_listing = false
+			@list = Listing.find(params[:listing_id])
+			redirect_to root_path, notice: "You are not allowed to enter this page!" if @list.user != current_user
+			@reservations = @list.reservations
+		end
 	end
 
 	def show
@@ -30,4 +41,8 @@ class ReservationsController < ApplicationController
 		params.require(:reservation).permit(:guest, :end_date, :start_date, :user_id, :listing_id)
 		# params.permit(:listing_id)
 	end
+
+	def authenticate_user
+  	redirect_to sign_in_path if signed_out?
+  end
 end

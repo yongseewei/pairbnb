@@ -69,7 +69,7 @@ class ListingsController < ApplicationController
 		@list = Listing.find(params[:id])
 	end
 
-	 def authenticate_user
+	def authenticate_user
   	redirect_to sign_in_path if signed_out?
   end
 

@@ -2,7 +2,7 @@ class Listing < ActiveRecord::Base
 	belongs_to :user
 	has_many :reservations
   acts_as_taggable
-  mount_uploaders :images, AvatarUploader
+  mount_uploaders :images, ListingUploader
 
   def taken_date
   	date = []
