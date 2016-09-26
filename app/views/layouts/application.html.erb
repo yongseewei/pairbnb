@@ -2,8 +2,10 @@
 <html>
 <title>PairBnb</title>
 <head>
+  <%= include_gon %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application' %>
+  <script src="https://js.braintreegateway.com/v2/braintree.js"></script>
   <%= csrf_meta_tag %>
 </head>
 <body>
@@ -41,9 +43,10 @@
         <div class="alert alert-info" role="alert" id="flash_<%= key %>"><%= value %></div>
       <% end %>
     </div>
-
-    <%= yield %>
   </div>
+  
+    <%= yield %>
+  
 </body>
 </html>
 

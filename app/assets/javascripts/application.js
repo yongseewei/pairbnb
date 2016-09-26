@@ -19,7 +19,7 @@
 //= require_tree .
 
 $(document).ready(function(){
-	
+
 	 // var string = jQuery.datepicker.formatDate('dd-mm-yy', date);
 	$(document).on("click","#filter-button",function(event){
 		$("#filter-listings").slideDown()
@@ -44,7 +44,7 @@ $(document).ready(function(){
 	$(document).on("focus","#dateFrom, #dateTo",function(event){
 		$('#dateFrom, #dateTo').datepicker({
 	    beforeShow: customRange,
-	    // beforeShowDay: DisableSpecificDates,
+	    beforeShowDay: DisableSpecificDates,
 	    dateFormat: "dd M yy",
     })
   });
@@ -60,11 +60,6 @@ $(document).ready(function(){
 		window.history.pushState("object or string", "Title", listing);		
 	}
 
-	// function DisableSpecificDates(date) {
-	// 	var disableddates = $("#list_show").attr("data-id");
- //    var string = jQuery.datepicker.formatDate('dd-mm-yy', date);
- //    return [disableddates.indexOf(string) == -1];
- //  }
 
 	function customRange(input) {
 
@@ -74,7 +69,6 @@ $(document).ready(function(){
 
       return {
           minDate: minDate
-
       };
     }
 
@@ -97,7 +91,13 @@ $(document).ready(function(){
 
 	}	
 
-      
+  function DisableSpecificDates(date) {
+		var disableddates = gon.reservations;
+
+    var string = jQuery.datepicker.formatDate('yy-mm-dd', date);
+    return [disableddates.indexOf(string) == -1];
+  }
+
       
  
     

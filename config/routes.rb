@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'transactions/new'
+
   get 'users/show'
 
   get 'welcome/home'
@@ -33,11 +35,14 @@ Rails.application.routes.draw do
 
   resources :listings do
     resources :reservations, only: [:index, :new, :create]
+    resources :transactions, only: [:new, :create]
   end
 
   resources :users do
     resources :reservations, only: [:index]
   end
+
+ 
   # post "/listings/filter" => "listings#filter"
 
   # Example of regular route:

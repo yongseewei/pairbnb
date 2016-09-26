@@ -25,7 +25,10 @@ class ListingsController < ApplicationController
 	end
 
 	def show
-		@date = @list.taken_date
+		# byebug
+		gon.client_token = generate_client_token
+		gon.reservations = @list.taken_date
+
 		@images = @list.images.sample(4)
 		@reservation = Reservation.new
 	end
@@ -79,4 +82,8 @@ class ListingsController < ApplicationController
       redirect_to @list, :notice => "You are not allowed to edit this listing"
     end
   end
+
+  def generate_client_token
+	  Braintree::ClientToken.generate
+	end
 end

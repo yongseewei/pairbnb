@@ -1,0 +1,16 @@
+ 
+<div class="col-md-8 col-md-offset-2">
+	<div class="row">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<%= form_tag listing_transactions_path(@list,@params) do%>
+				  <%= render '/transactions/customer_form'  %>
+
+				  <p>Please enter your payment details:</p>
+				  <div id="dropin"></div>
+				  <%=submit_tag "Pay $#{@price}", class: "button mt1" %>
+				<%end%>
+			</div>
+		</div>
+	</div>
+</div>

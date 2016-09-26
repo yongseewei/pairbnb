@@ -23,10 +23,12 @@ class ReservationsController < ApplicationController
 
 	def create
 		@reservation = Reservation.new(reserve_params)
-		if @reservation.save
-      redirect_to user_reservations_path(current_user)
+		@list = @reservation.listing
+		if @reservation.valid?
+			redirect_to new_listing_transaction_path(@list, reserve_params)
+			# ReservationMailer.booking_email(current_user,@list.user,@reservation.id).deliver_later
+      # redirect_to user_reservations_path(current_user)
     else
-    	@list = @reservation.listing
 			@date = @list.taken_date
 			@images = @list.images.sample(4)
       render 'listings/show'

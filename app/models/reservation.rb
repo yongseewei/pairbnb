@@ -12,7 +12,7 @@ class Reservation < ActiveRecord::Base
 	def check_date
 		empty = 0
 		self.listing.reservations.each do |reserve|
-			empty += 1 if (reserve.start_date..reserve.end_date).overlaps?(self.start_date..self.end_date)
+			empty += 1 if (reserve.start_date...reserve.end_date).overlaps?(self.start_date...self.end_date)
 		end
 		if empty > 0
 			errors.add(:date, "is not available")

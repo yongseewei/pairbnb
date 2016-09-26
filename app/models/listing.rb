@@ -7,7 +7,7 @@ class Listing < ActiveRecord::Base
   def taken_date
   	date = []
   	self.reservations.each do |val|
-  		date += [*val.start_date.strftime..val.end_date.strftime]
+  		date += [*val.start_date...val.end_date]
   	end
   	date
   end

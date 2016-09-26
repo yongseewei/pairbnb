@@ -20,6 +20,21 @@
 @import "bootstrap";
 @import 'font-awesome';
 
+
+.videoWrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 0px;
+  height: 0;
+}  
+.videoWrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
 body {
 	background: #E9E9E9;
 }
@@ -82,3 +97,4 @@ textarea {
 .list-info-col td{
 	text-align:left; 
 }
+
