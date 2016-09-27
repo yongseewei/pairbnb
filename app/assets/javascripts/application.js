@@ -47,5 +47,15 @@ $(document).ready(function(){
   	var listing = "/listings/" + $("#error-message-reservations").attr("data-id")
 		window.history.pushState("object or string", "Title", listing);		
 	}
+
+	$(window).scroll(function() {
+    if($(this).scrollTop() > 50)  /*height in pixels when the navbar becomes non opaque*/ 
+    {
+    	// debugger
+       $('#pairbnb-navbar').addClass('opaque');
+    } else {
+       $('#pairbnb-navbar').removeClass('opaque');
+    }
+	});
     
 });

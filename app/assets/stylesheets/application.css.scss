@@ -21,6 +21,19 @@
 @import 'font-awesome';
 
 
+.opaque{
+	background-color: rgba(255,255,255,0.5);
+	transition: background-color .5s ease 0s;
+}
+
+.nav.navbar-nav.navbar-right li a {
+    color: black;
+}
+
+.opaque-font{
+	 color: black;
+}
+
 .videoWrapper {
   position: relative;
   padding-bottom: 56.25%;
