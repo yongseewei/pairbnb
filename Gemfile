@@ -43,6 +43,7 @@ gem 'sidekiq', '~> 4.2', '>= 4.2.1'
 gem 'braintree', '~> 2.33.1'
 gem 'gon', '~> 5.1.2'
 gem 'searchkick'
+gem 'fog'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
