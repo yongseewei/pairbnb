@@ -6,7 +6,7 @@ class ListingsController < ApplicationController
 
 	def index
 		@search = params[:query].presence || "*"
-		@lists = Listing.search(@search,order: {created_at: :desc, ignore_unmapped: true}, fields: [:title, :tags_name], match: :word_start)
+		@lists = Listing.search(@search,order: [{created_at: {order: :desc, ignore_unmapped: true}}], fields: [:title, :tags_name], match: :word_start)
 		check_ajax
 		respond_to do |format|
       format.js # index.js.erb
