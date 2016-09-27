@@ -38,6 +38,8 @@ $(document).ready(function(){
       			break;
       		}
       	}
+      	var maxDate = new Date()
+      	maxDate.setDate(maxDate.getDate() + 180)
 			}
       minDate.setDate(minDate.getDate() + 1)
       maxDate.setDate(maxDate.getDate())
