@@ -1,34 +1,28 @@
 class ListingsController < ApplicationController
+	include ListingsHelper
 	before_action :find_list, only: [:show, :edit, :update, :destroy]
 	before_action :correct_user, only: [:edit, :update, :destroy]
 	before_action :authenticate_user, except: [:index, :show]
 
 	def index
-		@search = params[:search]
-		if params[:search] == ""
-			@lists = Listing.all.order("created_at DESC")
-		else
-			@lists = Listing.search({:tags_name_in=>params[:search].capitalize}).result.order("created_at DESC")
-		end
-
-		if request.xhr?
-			tag = []
-			tag << "non-smoker" if params[:non_smoker] == "true"
-			tag << "non-pet" if params[:non_pet] == "true"
-			@lists_js = @lists
-			@lists_js = @lists.tagged_with(tag).order("created_at DESC") if tag != []
-    end
+		@search = params[:query].presence || "*"
+		@lists = Listing.search(@search,order: {created_at: :desc}, fields: [:title, :tags_name], match: :word_start)
+		check_ajax
 		respond_to do |format|
       format.js # index.js.erb
       format.html # index.html.erb
     end 
 	end
 
+	def autocomplete
+    render json: Listing.search(params[:query] , autocomplete: true, limit: 10)
+    .map {|listing| {title: listing.title, value: listing.id}}
+  end
+
 	def show
 		# byebug
 		gon.client_token = generate_client_token
 		gon.reservations = @list.taken_date
-
 		@images = @list.images.sample(4)
 		@reservation = Reservation.new
 	end
@@ -61,6 +55,8 @@ class ListingsController < ApplicationController
 		@list.destroy
 		redirect_to listings_path
 	end
+
+
 
 	private
 

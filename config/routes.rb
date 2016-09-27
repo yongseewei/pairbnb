@@ -29,6 +29,8 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show, :edit, :update, :destroy] 
 
+  get "/listings/autocomplete" => "listings#autocomplete"
+
   resources :listings
 
   resources :tags, only: [:index, :show]
@@ -36,7 +38,14 @@ Rails.application.routes.draw do
   resources :listings do
     resources :reservations, only: [:index, :new, :create]
     resources :transactions, only: [:new, :create]
+    # collection do
+    #   get :autocomplete
+    # end
   end
+
+  # resources :listings, only: [:index] do
+
+  # end
 
   resources :users do
     resources :reservations, only: [:index]

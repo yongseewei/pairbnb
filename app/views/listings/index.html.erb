@@ -5,7 +5,7 @@
 	</div>
   <div class="panel-body">
 	  <%= form_tag("/listings", id: "filter-submit", remote: true) do %>
-	  	<%= hidden_field_tag :search, @search %>
+	  	<%= hidden_field_tag :query, @search %>
 		  <div class="row">
 				<div class="col-md-3 col-md-offset-2">
 					<%= hidden_field_tag :non_smoker, 'false' %>
