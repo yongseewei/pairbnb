@@ -8,7 +8,7 @@
 		  <table class="table  table-striped">
 		    <tr width="100%">
 			    <th>No.</th>
-			    <th>Listing</th> 
+			    <th>Listing</th>
 			    <th>Start Date</th>
 			    <th>End Date</th>
 			    <th>Guest</th>
@@ -16,7 +16,7 @@
 			  <% @reservations.each_with_index do |reserve, key| %>
 			  	<tr class="table-striped">
 				    <td><%= key + 1 %></td>
-				    <td><a href="/listings/<%= reserve.listing.id %>"><%= reserve.listing.title %></a></td> 
+				    <td><a href="/listings/<%= reserve.listing.id %>"><%= reserve.listing.title %></a></td>
 				    <td><%=reserve.start_date%></td>
 				    <td><%=reserve.end_date%></td>
 				    <td><%=reserve.guest%></td>
@@ -33,7 +33,7 @@
 		  <table class="table  table-striped">
 		    <tr width="100%">
 			    <th>No.</th>
-			    <th>Guest name</th> 
+			    <th>Guest name</th>
 			    <th>Start Date</th>
 			    <th>End Date</th>
 			    <th>Guest No.</th>
@@ -41,7 +41,7 @@
 			  <% @reservations.each_with_index do |reserve, key| %>
 			  	<tr class="table-striped">
 				    <td><%= key + 1 %></td>
-				    <td><%=reserve.user.firstname%></a></td> 
+				    <td><%=reserve.user.firstname%></a></td>
 				    <td><%=reserve.start_date%></td>
 				    <td><%=reserve.end_date%></td>
 				    <td><%=reserve.guest%></td>

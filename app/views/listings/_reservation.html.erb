@@ -14,7 +14,7 @@
 		    <td><%= f.date_field :start_date, type: 'text', id: "dateFrom", size: "10", placeholder: "dd/mm/yyyy" %></td>
 		    <td><%= f.date_field :end_date, type: 'text', id: "dateTo", size: "10", placeholder: "dd/mm/yyyy" %></td>
 		    <td><%= f.number_field :guest, type: 'number', value: "1", min: "1", max: "10"%></td>
-		    <td></td>
+		    <td><%= f.hidden_field :listing_id , value: @list.id %></td>
 		  </tr>
 			
 		</table>

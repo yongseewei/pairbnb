@@ -1,7 +1,6 @@
 class ListingsController < ApplicationController
 	include ListingsHelper
-	before_action :find_list, only: [:show, :edit, :update, :destroy]
-	before_action :correct_user, only: [:edit, :update, :destroy]
+	before_action :find_list, only: [:edit, :update, :destroy]
 	before_action :authenticate_user, except: [:index, :show]
 
 	def index
@@ -11,7 +10,7 @@ class ListingsController < ApplicationController
 		respond_to do |format|
       format.js # index.js.erb
       format.html # index.html.erb
-    end 
+    end
 	end
 
 	def autocomplete
@@ -21,8 +20,11 @@ class ListingsController < ApplicationController
 
 	def show
 		# byebug
-		gon.client_token = generate_client_token
-		gon.reservations = @list.taken_date
+		# @messages = current_user.messages.build(body: "12312312312")
+		# @messages.save
+		@message = Message.new
+		@list = Listing.find(params[:id])	
+		gon.reservations = taken_date
 		@images = @list.images.sample(4)
 		@reservation = Reservation.new
 	end
@@ -33,30 +35,20 @@ class ListingsController < ApplicationController
 
 	def create
 		@list = current_user.listings.build(list_params)
-		if @list.save
-			redirect_to @list, notice: "Successfully saved!"
-		else
-			render 'new'
-		end
+		redirect_to @list, notice: "Successfully saved!" if @list.save
 	end
 
 	def edit
 	end
 
 	def update
-		if @list.update(list_params)
-			redirect_to @list, notice: "List was Successfully updated!"
-		else
-			render 'edit'
-		end
+		redirect_to @list, notice: "List was Successfully updated!" if @list.update(list_params)
 	end
 
 	def destroy
 		@list.destroy
 		redirect_to listings_path
 	end
-
-
 
 	private
 
@@ -65,21 +57,11 @@ class ListingsController < ApplicationController
 	end
 
 	def find_list
-		@list = Listing.find(params[:id])
+		@list = current_user.listings.find_by(id: params[:id])
+		redirect_to :back, :notice => "You are not allowed to edit this listing" unless @list
 	end
 
 	def authenticate_user
   	redirect_to sign_in_path if signed_out?
   end
-
-  def correct_user
-  	user = @list.user.id
-    if user != current_user.id
-      redirect_to @list, :notice => "You are not allowed to edit this listing"
-    end
-  end
-
-  def generate_client_token
-	  Braintree::ClientToken.generate
-	end
 end

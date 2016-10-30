@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   # omniauth-facebook
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
 
-  resources :users, only: [:show, :edit, :update, :destroy] 
+  resources :users, only: [:show, :edit, :update]
 
   get "/listings/autocomplete" => "listings#autocomplete"
 
@@ -51,7 +51,8 @@ Rails.application.routes.draw do
     resources :reservations, only: [:index]
   end
 
- 
+  resources :messages, only: [:new, :create]
+  resources :bots, only: [:new, :create]
   # post "/listings/filter" => "listings#filter"
 
   # Example of regular route:

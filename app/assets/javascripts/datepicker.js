@@ -29,6 +29,8 @@ $(document).ready(function(){
     if (input.id == 'dateTo') {
     	if($('#dateFrom').val() == ""){
     		var minDate = new Date();
+        var maxDate = new Date()
+        maxDate.setDate(maxDate.getDate() + 180)
     	}
 			else{
 	      var minDate = new Date($('#dateFrom').val());		

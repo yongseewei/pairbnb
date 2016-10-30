@@ -14,12 +14,14 @@
 //= require jquery_ujs
 //= require masonry/jquery.masonry
 //= require jquery-ui
+//= require private_pub
+//= require chat
 //= require bootstrap-sprockets
 //= require turbolinks
+//= require jquery-readyselector
 //= require_tree .
 
 $(document).ready(function(){
-	 // var string = jQuery.datepicker.formatDate('dd-mm-yy', date);
 	$(document).on("click","#filter-button",function(event){
 		$("#filter-listings").slideDown()
 		$("#filter-button").hide()
@@ -40,18 +42,19 @@ $(document).ready(function(){
 		});
 	})
 
-	
-
-  if ($("#error-message-reservations").length){
-  	
+  if ($("#error-message-reservations").length){ 	
   	var listing = "/listings/" + $("#error-message-reservations").attr("data-id")
 		window.history.pushState("object or string", "Title", listing);		
 	}
 
+	$(".transactions").ready(function() {
+		var title = document.location.pathname;
+		window.history.pushState("object or string", "Title", title);		
+	});
+
 	$(window).scroll(function() {
     if($(this).scrollTop() > 50)  /*height in pixels when the navbar becomes non opaque*/ 
     {
-    	// debugger
        $('#pairbnb-navbar').addClass('opaque');
     } else {
        $('#pairbnb-navbar').removeClass('opaque');

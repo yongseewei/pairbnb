@@ -5,15 +5,10 @@ class Listing < ActiveRecord::Base
   acts_as_taggable
   mount_uploaders :images, ListingUploader
 
-  def taken_date
-  	date_s = []
-    date_e = []
-  	self.reservations.each do |val|
-  		date_s += [*val.start_date...val.end_date]
-      date_e += [*(val.start_date+1)..val.end_date]
-  	end
-  	[date_s,date_e]
-  end
+  validates :title, :presence => true
+  validates :description, :presence => true
+  validates :rate, :presence => true
+  validates :user_id, :presence => true
 
   def search_data
     attributes.merge(

@@ -9,7 +9,7 @@
   <script type="text/javascript" src="https://twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.js"></script>
   <%= csrf_meta_tag %>
 </head>
-<body>
+<body class="<%= controller_name %> <%= action_name %>">
   <nav class="navbar navbar-default navbar-fixed-top" id="pairbnb-navbar">
     <div class="container">
       <div class="navbar-brand">
@@ -18,6 +18,7 @@
         <% end %>
       </div>
       <%= render 'layouts/search' %>
+
       <% if signed_in? %>
         <ul class="nav navbar-nav navbar-right">
           <li><%= link_to "New List", new_listing_path%></li>
@@ -49,7 +50,40 @@
   </div>
 
     <%= yield %>
-  
+    <br>
+    <br>
+    <div id="chatbox_id<%= current_user.id if signed_in? %>">
+      <div class="chatbox">
+        <div class="chatboxhead">
+          <div class="chatboxtitle">
+            <i class="fa fa-comments"></i>
+
+            <h1>Chat Bot</h1>
+          </div>
+          <div class="chatboxoptions">
+            <%= link_to "<i class='fa  fa-minus'></i> ".html_safe, "#", class: "toggleChatBox", style: "display:none"  %>
+            <%= link_to "<i class='fa  fa-plus'></i> ".html_safe, "#", class: "toggleChatBox" %>
+             &nbsp;&nbsp;
+          </div>
+          <br clear="all"/>
+        </div>
+        <div class="chatboxcontent">
+          <% if @messages && @messages.any? %>
+            <%= render @messages %>
+          <% end %>
+        </div>
+        <div class="chatboxinput">
+          <%= form_for @message, :remote => true  do |f| %>
+              <%= f.text_area :body, class: "chatboxtextarea" %>
+              <%= f.hidden_field :status , value: "user" %>
+          <% end %>
+        </div>
+        <%= subscribe_to "/messages/new" %> 
+        <%= subscribe_to "/bots/new" %>
+      </div> 
+    </div>
+
+
 </body>
 </html>
 

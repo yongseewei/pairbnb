@@ -44,10 +44,22 @@ gem 'braintree', '~> 2.33.1'
 gem 'gon', '~> 5.1.2'
 gem 'searchkick'
 gem 'fog'
+gem "rails_best_practices"
+gem 'private_pub'
+gem 'thin'
+gem 'api-ai-ruby', '~> 1.2', '>= 1.2.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'guard'
+  gem 'guard-rspec'
+  gem 'guard-puma'
+  gem 'rspec'
+  gem 'rspec-rails'
+  gem 'shoulda-matchers'
+  gem 'factory_girl_rails'
+  gem 'shoulda-callback-matchers'
 end
 
 group :development do
